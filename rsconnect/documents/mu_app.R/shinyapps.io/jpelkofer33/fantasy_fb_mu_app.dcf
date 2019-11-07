@@ -1,0 +1,13 @@
+name: fantasy_fb_mu_app
+title: fantasy_fb_mu_app
+username:
+account: jpelkofer33
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1435722
+bundleId: 2570056
+url: https://jpelkofer33.shinyapps.io/fantasy_fb_mu_app/
+when: 1573090933.359
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: clean_data.Rmd|fpts_off.csv|nflcolors.csv
