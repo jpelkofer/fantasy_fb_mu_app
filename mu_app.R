@@ -194,7 +194,7 @@ server <- function(input, output, session) {
                         labels = c(paste0(input$team2, " Offense"), paste0(input$team1, " Defense"))) +
       scale_y_continuous(limits = c(0,1)) +
       labs(x="", y="NFL Percentile Rank",
-           title = paste0(input$team1, " Offense vs. ", input$team2, " Defense"),
+           title = paste0(input$team2, " Offense vs. ", input$team1, " Defense"),
            subtitle = "To find matchup advantages for the offense look for tall offense bars and short defense bars") +
       theme_minimal() +
       theme(legend.title = element_blank(),
