@@ -1,0 +1,60 @@
+---
+title: "Untitled"
+author: "Jarrod Pelkofer"
+date: "11/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(reshape2)
+library(ggnewscale)
+library(teamcolors)
+library(janitor)
+
+fpts_off <- read_csv("fpts_off.csv") %>%
+  clean_names()
+
+
+off <- fpts_off %>%
+  group_by(team, p, week) %>%
+  summarize(avg = sum(fd_points)) %>%
+  ungroup() %>%
+  group_by(team, p) %>%
+  summarize(off_pts_scored = mean(avg)) %>%
+  filter(p != "FB") %>%
+  rename(off = team) %>%
+  pivot_wider(names_from = p, values_from = off_pts_scored) %>%
+  ungroup() %>% 
+  mutate(qb_rank = percent_rank(QB),
+         rb_rank = percent_rank(RB),
+         wr_rank = percent_rank(WR),
+         te_rank = percent_rank(TE)) %>% 
+  select(off, qb_rank, rb_rank, wr_rank, te_rank)
+
+def <- fpts_off %>%
+  group_by(opp, p, week) %>%
+  summarize(avg = sum(fd_points)) %>%
+  ungroup() %>%
+  group_by(opp, p) %>%
+  summarize(def_pts_allowed = mean(avg)) %>%
+  filter(p != "FB") %>%
+  rename(def = opp) %>% 
+  pivot_wider(names_from = p, values_from = def_pts_allowed) %>% 
+    ungroup() %>% 
+  mutate(qb_def_rank = percent_rank(QB*-1),
+         rb_def_rank = percent_rank(RB*-1),
+         wr__def_rank = percent_rank(WR*-1),
+         te_def_rank = percent_rank(TE*-1)) %>% 
+  select(def, qb_def_rank, rb_def_rank,  wr__def_rank, te_def_rank )
+
+off %>%
+  left_join(select(def, everything()), by = c("off"="def")) %>%
+  write_csv("team_fpts.csv")
+
+```
+
