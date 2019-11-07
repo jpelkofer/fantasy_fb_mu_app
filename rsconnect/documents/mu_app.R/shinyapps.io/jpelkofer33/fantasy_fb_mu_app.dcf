@@ -5,9 +5,9 @@ account: jpelkofer33
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1435722
-bundleId: 2570056
+bundleId: 2571324
 url: https://jpelkofer33.shinyapps.io/fantasy_fb_mu_app/
-when: 1573090933.359
+when: 1573135444.45999
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: clean_data.Rmd|fpts_off.csv|nflcolors.csv
+ignoredFiles: app_image.PNG|clean_data.Rmd|fpts_off.csv|nflcolors.csv|README.md
