@@ -115,7 +115,7 @@ server <- function(input, output, session) {
       scale_y_continuous(limits = c(0,1)) +
       labs(x="", y="NFL Percentile Rank",
            title = paste0(input$team1, " Offense vs. ", input$team2, " Defense"),
-           subtitle = "To find matchup advantages for the offense look for tall offense bars and short defense bars") +
+           subtitle = "To find matchup advantages for the offense look for high offensive bars and low defensive bars") +
       theme_minimal() +
       theme(legend.title = element_blank(),
             plot.title = element_text(face = "bold", size = 16),
@@ -195,7 +195,7 @@ server <- function(input, output, session) {
       scale_y_continuous(limits = c(0,1)) +
       labs(x="", y="NFL Percentile Rank",
            title = paste0(input$team2, " Offense vs. ", input$team1, " Defense"),
-           subtitle = "To find matchup advantages for the offense look for tall offense bars and short defense bars") +
+           subtitle = "To find matchup advantages for the offense look for high offensive bars and low defensive bars") +
       theme_minimal() +
       theme(legend.title = element_blank(),
             plot.title = element_text(face = "bold", size = 16),
